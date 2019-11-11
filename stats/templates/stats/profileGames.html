@@ -1,0 +1,41 @@
+{% extends "stats/base.html" %}
+{% load mathfilters %}
+{% block content %}
+	<h1 class="mb-3">My game history</h1>
+    {% for game in games %}
+        <article class="media content-section">
+			<img class="rounded-circle article-img" src="{{ game.user.profile.picture.url }}">
+			<div class="media-body">
+				<div class="article-metadata">
+					<small class="mr-2">{{ game.user }}</small>
+					<small class="text-muted">{{ game.datePlayed|date:"F d, Y" }}</small>
+				</div>
+				<h2><a class="article-title" href="{% url 'gameDetails' game.id %}">{{ game.player }} played {{ game.opponent }}</a></h2>
+				{% if game.win == True %}
+					<p class="article-content">Winner was {{ game.player }}</p>
+				{% else %}
+					<p class="article-content">Winner was {{ game.opponent }}</p>
+				{% endif %}
+			</div>
+        </article>
+    {% endfor %}
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|sub:'3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+{% endblock content %}

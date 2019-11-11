@@ -1,0 +1,42 @@
+from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
+from django.urls import reverse
+
+class Game(models.Model):
+	player = models.CharField(max_length=17)
+	opponent = models.CharField(max_length=17)
+	deckCode = models.CharField(max_length=50)
+	win = models.BooleanField()
+	datePlayed = models.DateTimeField(default=timezone.now)
+	user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+	
+	def __str__(self):
+		return self.player + " VS " + self.opponent
+	
+	def get_absolute_url(self):
+		return reverse('gameDetails', kwargs={'pk': self.pk})
+
+class Region(models.Model):
+	name = models.CharField(max_length=16, unique=True, primary_key=True)
+	wins = models.IntegerField()
+	losses = models.IntegerField()
+    
+	def __str__(self):
+		return self.name
+
+class Deck(models.Model):
+	code = models.CharField(max_length=50, unique=True, primary_key=True)
+	wins = models.IntegerField()
+	losses = models.IntegerField()
+    
+	def __str__(self):
+		return self.code
+
+class Card(models.Model):
+	id = models.CharField(max_length=10, unique=True, primary_key=True)
+	wins = models.IntegerField()
+	losses = models.IntegerField()
+    
+	def __str__(self):
+		return self.id
