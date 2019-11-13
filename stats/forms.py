@@ -6,4 +6,4 @@ from . models import Game
 class AddGameDataForm(forms.ModelForm):
 	class Meta:
 		model = Game
-		fields = ['player', 'opponent', 'deckCode', 'win', 'user']
+		fields = ['player', 'opponent', 'deckCode', 'win']
