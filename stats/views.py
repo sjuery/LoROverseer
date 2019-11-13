@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from . forms import AddGameDataForm
 from . models import Game
 
 def Home(request):
@@ -64,6 +65,16 @@ class StatsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == game.user:
             return True
         return False
+
+def AddData(request):
+	if request.method == 'POST':
+		dataForm = AddGameDataForm(request.POST)
+		if dataForm.is_valid():
+			dataForm.save()
+			return redirect('profileGames')
+	else:
+		dataForm = AddGameDataForm()
+	return render(request, 'stats/addGame.html', {'dataForm':dataForm})
 
 def About(request):
     return render(request, 'stats/about.html', {'title': 'About'})

@@ -39,6 +39,7 @@ urlpatterns = [
     path('passwordReset/done/', auth_views.PasswordResetDoneView.as_view(template_name='users/passwordResetDone.html'), name='password_reset_done'),
     path('passwordReset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/passwordResetConfirm.html'), name='password_reset_confirm'),
     path('passwordReset/complete', auth_views.PasswordResetCompleteView.as_view(template_name='users/passwordResetComplete.html'), name='password_reset_complete'),
+    path('addGame/', stat_views.AddData, name='addGame'),
     path('admin/', admin.site.urls),
 ]
 
