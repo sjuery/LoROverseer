@@ -7,3 +7,6 @@ class AddGameDataForm(forms.ModelForm):
 	class Meta:
 		model = Game
 		fields = ['player', 'opponent', 'deckCode', 'win']
+
+class AddReplayData(forms.Form):
+	replay = forms.CharField()

@@ -26,6 +26,7 @@ urlpatterns = [
     path('', stat_views.Home, name='stats'),
     path('stats/games/', StatsListView.as_view(), name='games'),
     path('stats/games/<int:pk>/', StatsDetailView.as_view(), name='gameDetails'),
+    path('stats/game/', stat_views.Replay, name='gameDetails'),
     path('stats/games/create/', StatsCreateView.as_view(), name='gameCreate'),
     path('stats/games/<int:pk>/update/', StatsUpdateView.as_view(), name='gameUpdate'),
     path('stats/games/<int:pk>/delete/', StatsDeleteView.as_view(), name='gameDelete'),

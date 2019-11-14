@@ -1,0 +1,8 @@
+{% extends "stats/base.html" %}
+{% load mathfilters %}
+{% block content %}
+	<h1 class="mb-3">Replay</h1>
+	{% for card in cards %}
+		<img src="" style="position:absolute; top: {{ card.TopLeftY|div:2 }}px; left: {{ card.TopLeftX|div:2 }}px; width: {{ card.Width|div:2 }}px; height: {{ card.Height|div:2 }}px;">
+    {% endfor %}
+{% endblock content %}
