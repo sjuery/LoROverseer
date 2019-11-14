@@ -4,6 +4,7 @@ import os
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.core.files.storage import default_storage as storage
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from . forms import AddGameDataForm, AddReplayData
@@ -80,7 +81,7 @@ def AddData(request):
             replay = replayForm.cleaned_data.get('replay')
             data = json.loads(replay)
             newPost = dataForm.save()
-            with open(f'replayData/{newPost.pk}.json', 'w') as f:
+            with storage.open(f'replayData/{newPost.pk}.json', 'w') as f:
                 json.dump(data, f)
             return redirect('profileGames')
     else:
