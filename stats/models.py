@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 class Game(models.Model):
-	player = models.CharField(max_length=17)
-	opponent = models.CharField(max_length=17)
-	deckCode = models.CharField(max_length=50)
+	player = models.CharField(max_length=25)
+	opponent = models.CharField(max_length=25)
+	deckCode = models.CharField(max_length=100)
 	win = models.BooleanField()
 	datePlayed = models.DateTimeField(default=timezone.now)
 	user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)

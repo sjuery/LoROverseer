@@ -76,9 +76,11 @@ def AddData(request):
     if request.method == 'POST':
         dataForm = AddGameDataForm(request.POST)
         replayForm = AddReplayData(request.POST)
+        print(dataForm.errors)
         if dataForm.is_valid() and replayForm.is_valid():
             username = dataForm.cleaned_data.get('player')
             replay = replayForm.cleaned_data.get('replay')
+            print(replay)
             data = json.loads(replay)
             newPost = dataForm.save()
             with storage.open(f'replayData/{newPost.pk}.json', 'w') as f:
