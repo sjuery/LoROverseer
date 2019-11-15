@@ -6,7 +6,7 @@
 			<img class="rounded-circle article-img" src="{{ game.user.profile.picture.url }}">
 			<div class="media-body">
 				<div class="article-metadata">
-					<small class="mr-2">{{ game.user }}</small>
+					<small class="mr-2">{{ game.gameMode }}</small>
 					<small class="text-muted">{{ game.datePlayed|date:"F d, Y" }}</small>
 				</div>
 				<h2><a class="article-title" href="{% url 'gameDetails' game.id %}">{{ game.player }} played {{ game.opponent }}</a></h2>
@@ -14,7 +14,10 @@
 					<p class="article-content">Winner was {{ game.player }}</p>
 				{% else %}
 					<p class="article-content">Winner was {{ game.opponent }}</p>
-				{% endif %}
+        {% endif %}
+        {% if game.gameMode == "Expedition" %}
+          <p class="article-content">{{ game.player }}'s Expedition is currently at {{ game.expeditionWins }} wins and {{ game.expeditionLosses }} losses.</p>
+        {% endif %}
 			</div>
         </article>
     {% endfor %}

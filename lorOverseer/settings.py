@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'mathfilters',
-    'storages'
+    'storages',
+    'lor_deckcodes'
 ]
 
 MIDDLEWARE = [
