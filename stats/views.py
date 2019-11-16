@@ -87,15 +87,13 @@ def AddData(request):
             username = dataForm.cleaned_data.get('player')
             replay = replayForm.cleaned_data.get('replay')
             secretKey = dataForm.cleaned_data.get('secretKey')
-            deckCode = dataForm.cleaned_data.get('deckCode')
-            regionName = dataForm.cleaned_data.get('regions')
             win = dataForm.cleaned_data.get('win')
             data = json.loads(replay)
             dataForm.instance.user = Profile.objects.get(secretKey=secretKey).user
             newPost = dataForm.save()
             #Region
             try:
-                region = Region.objects.get(name=regionName)
+                region = Region.objects.get(name=newPost.regions)
                 if win:
                     region.wins += 1
                 else:
@@ -103,13 +101,13 @@ def AddData(request):
                 region.totalGames += 1
             except:
                 if win:
-                    region = Region(name=regionName, wins=1, losses=0, totalGames=1)
+                    region = Region(name=newPost.regions, wins=1, losses=0, totalGames=1)
                 else:
-                    region = Region(name=regionName, wins=0, losses=1, totalGames=1)
+                    region = Region(name=newPost.regions, wins=0, losses=1, totalGames=1)
             region.save()
             #Decks
             try:
-                deck = Deck.objects.get(deckCode=deckCode)
+                deck = Deck.objects.get(deckCode=newPost.deckCode)
                 if win:
                     deck.wins += 1
                 else:
@@ -117,12 +115,12 @@ def AddData(request):
                 deck.totalGames += 1
             except:
                 if win:
-                    deck = Deck(deckCode=deckCode, wins=1, losses=0, totalGames=1)
+                    deck = Deck(deckCode=newPost.deckCode, wins=1, losses=0, totalGames=1)
                 else:
-                    deck = Deck(deckCode=deckCode, wins=0, losses=1, totalGames=1)
+                    deck = Deck(deckCode=newPost.deckCode, wins=0, losses=1, totalGames=1)
             deck.save()
             #Cards
-            unpackedDeck = LoRDeck.from_deckcode(deckCode)
+            unpackedDeck = LoRDeck.from_deckcode(newPost.deckCode)
             for card in list(unpackedDeck):
                 try:
                     newCard = Card.objects.get(id=card.card_id)
@@ -137,7 +135,6 @@ def AddData(request):
                     else:
                         newCard = Card(id=card_id, wins=0, losses=1, totalGames=1)
                 newCard.save()
-            
             with storage.open(f'replayData/{newPost.pk}.json', 'w') as f:
                 json.dump(data, f)
             return redirect('profileGames')
