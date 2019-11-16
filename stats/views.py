@@ -88,7 +88,7 @@ def AddData(request):
             replay = replayForm.cleaned_data.get('replay')
             secretKey = dataForm.cleaned_data.get('secretKey')
             deckCode = dataForm.cleaned_data.get('deckCode')
-            regionName = dataForm.cleaned_data.get('region')
+            regionName = dataForm.cleaned_data.get('regions')
             win = dataForm.cleaned_data.get('win')
             data = json.loads(replay)
             dataForm.instance.user = Profile.objects.get(secretKey=secretKey).user
