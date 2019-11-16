@@ -1,43 +1,23 @@
 {% extends "stats/base.html" %}
 {% load mathfilters %}
 {% block content %}
-    {% for game in games %}
-        <article class="media content-section">
-			<img class="rounded-circle article-img" src="{{ game.user.profile.picture.url }}">
-			<div class="media-body">
-				<div class="article-metadata">
-					<small class="mr-2">{{ game.gameMode }}</small>
-					<small class="text-muted">{{ game.datePlayed|date:"F d, Y" }}</small>
-				</div>
-				<h2><a class="article-title" href="{% url 'gameDetails' game.id %}">{{ game.player }} played {{ game.opponent }}</a></h2>
-				{% if game.win == True %}
-					<p class="article-content">Winner was {{ game.player }}</p>
-				{% else %}
-					<p class="article-content">Winner was {{ game.opponent }}</p>
-        {% endif %}
-        {% if game.gameMode == "Expedition" %}
-          <p class="article-content">{{ game.player }}'s Expedition is currently at {{ game.expeditionWins }} wins and {{ game.expeditionLosses }} losses.</p>
-        {% endif %}
-			</div>
-        </article>
-    {% endfor %}
-    {% if is_paginated %}
-
-      {% if page_obj.has_previous %}
-        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-      {% endif %}
-
-      {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% elif num > page_obj.number|sub:'3' and num < page_obj.number|add:'3' %}
-          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% endif %}
+	<article class="center">
+			<h6 style="text-align: left; float: left">Region Pick Rates</h6>
+      <h6 style="text-align: right">Region Win Rates</h6>
+      {% for region in regions %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ region.name }}</p>
+					<div class="skill" style="text-align: center">
+						<div class="winRateLevel" style="width: {{region.wins|div:region.totalGames|mul:50}}%">
+							
+            </div>
+            {% with pickRate=region.totalGames|div:totalGames|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+            </div>
+            {% endwith %}
+					</div>
+        </div>
       {% endfor %}
-
-      {% if page_obj.has_next %}
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-      {% endif %}
-
-    {% endif %}
+	</article>
 {% endblock content %}

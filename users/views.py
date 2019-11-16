@@ -1,7 +1,9 @@
+import secrets
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from . forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from . forms import UserRegisterForm, UserUpdateForm
+from . models import Profile
 
 def Register(request):
 	if request.method == 'POST':
@@ -19,14 +21,11 @@ def Register(request):
 def Profile(request):
 	if request.method == 'POST':
 		userForm = UserUpdateForm(request.POST, instance=request.user)
-		profileForm = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-		if userForm.is_valid() and profileForm.is_valid():
+		if userForm.is_valid():
 			userForm.save()
-			profileForm.save()
 			username = userForm.cleaned_data.get('username')
 			messages.success(request, f'Account for {username} successfully updated.')
 			return redirect('profile')
 	else:
 		userForm = UserUpdateForm(instance=request.user)
-		profileForm = ProfileUpdateForm()
-	return render(request, 'users/profile.html', {'userForm':userForm, 'profileForm':profileForm})
+	return render(request, 'users/profile.html', {'userForm':userForm})
