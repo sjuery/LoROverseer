@@ -7,9 +7,8 @@ import secrets
 @receiver(post_save, sender=User)
 def CreateProfile(sender, instance, created, **kwargs):
 	secretKey = secrets.token_hex(16)
-	Profile.secretKey = secretKey
 	if created:
-		Profile.objects.create(user=instance)
+		Profile.objects.create(user=instance, secretKey=secretKey)
 
 @receiver(post_save, sender=User)
 def SaveProfile(sender, instance, **kwargs):
