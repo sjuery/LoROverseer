@@ -31,7 +31,7 @@ class Region(models.Model):
 		return self.name
 
 class Deck(models.Model):
-	code = models.CharField(max_length=50, unique=True, primary_key=True)
+	code = models.CharField(max_length=100, unique=True, primary_key=True)
 	wins = models.IntegerField()
 	losses = models.IntegerField()
 	totalGames = models.IntegerField()
