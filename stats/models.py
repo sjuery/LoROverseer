@@ -22,7 +22,7 @@ class Game(models.Model):
 		return reverse('gameDetails', kwargs={'pk': self.pk})
 
 class Region(models.Model):
-	name = models.CharField(max_length=16, unique=True, primary_key=True)
+	name = models.CharField(max_length=100, unique=True, primary_key=True)
 	wins = models.IntegerField()
 	losses = models.IntegerField()
 	totalGames = models.IntegerField()
