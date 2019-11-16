@@ -9,7 +9,7 @@ from django.core.files.storage import default_storage as storage
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from . forms import AddGameDataForm, AddReplayData
-from . models import Game, Region
+from . models import Game, Region, Deck, Card
 from users.models import Profile
 
 def Home(request):
@@ -104,10 +104,11 @@ def AddData(request):
                     region = Region(name=newPost.regions, wins=1, losses=0, totalGames=1)
                 else:
                     region = Region(name=newPost.regions, wins=0, losses=1, totalGames=1)
+            print(newPost.regions)
             region.save()
             #Decks
             try:
-                deck = Deck.objects.get(deckCode=newPost.deckCode)
+                deck = Deck.objects.get(code=newPost.deckCode)
                 if win:
                     deck.wins += 1
                 else:
@@ -115,15 +116,15 @@ def AddData(request):
                 deck.totalGames += 1
             except:
                 if win:
-                    deck = Deck(deckCode=newPost.deckCode, wins=1, losses=0, totalGames=1)
+                    deck = Deck(code=newPost.deckCode, wins=1, losses=0, totalGames=1)
                 else:
-                    deck = Deck(deckCode=newPost.deckCode, wins=0, losses=1, totalGames=1)
+                    deck = Deck(code=newPost.deckCode, wins=0, losses=1, totalGames=1)
             deck.save()
             #Cards
             unpackedDeck = LoRDeck.from_deckcode(newPost.deckCode)
             for card in list(unpackedDeck):
                 try:
-                    newCard = Card.objects.get(id=card.card_id)
+                    newCard = Card.objects.get(id=card[2:])
                     if win:
                         newCard.wins += 1
                     else:
@@ -131,9 +132,9 @@ def AddData(request):
                     newCard.totalGames += 1
                 except:
                     if win:
-                        newCard = Card(id=card_id, wins=1, losses=0, totalGames=1)
+                        newCard = Card(id=card[2:], wins=1, losses=0, totalGames=1)
                     else:
-                        newCard = Card(id=card_id, wins=0, losses=1, totalGames=1)
+                        newCard = Card(id=card[2:], wins=0, losses=1, totalGames=1)
                 newCard.save()
             with storage.open(f'replayData/{newPost.pk}.json', 'w') as f:
                 json.dump(data, f)
