@@ -24,7 +24,7 @@ from stats.views import StatsDetailView, UserGameListView
 
 urlpatterns = [
     path('', stat_views.Overall, name='stats'),
-    path('stats/', stat_views.Overall, name='normalStats'),
+    path('stats/', stat_views.Overall, name='overallStats'),
     path('stats/normal', stat_views.Normal, name='normalStats'),
     path('stats/expeditions', stat_views.Expedition, name='expeditionStats'),
     path('stats/games/', UserGameListView.as_view(), name='games'),

@@ -2,9 +2,9 @@
 {% load mathfilters %}
 {% block content %}
 	<!-- Tab links -->
-	<h1 style="text-align: center; float: left">Normal</h1>
-	<h1 style="text-align: center; float: right">Expeditions</h1>
-	<h1 style="text-align: center;">Overall</h1>
+	<h1 style="text-align: center; float: left"><a href="{% url 'expeditionStats' %}">Expeditions</a></h1>
+	<h1 style="text-align: center; float: right"><a href="{% url 'normalStats' %}">Normal</a></h1>
+	<h1 style="text-align: center;">Overall Stats</h1>
 	<br>
 	<h3 style="text-align: left; float: left">Winrate</h1>
 	<h3 style="text-align: right;">Pickrate</h1>
