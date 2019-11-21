@@ -1,0 +1,169 @@
+{% extends "stats/base.html" %}
+{% load mathfilters %}
+{% block content %}
+	<!-- Tab links -->
+	<h1 style="text-align: center; float: left">Normal</h1>
+	<h1 style="text-align: center; float: right">Expeditions</h1>
+	<h1 style="text-align: center;">Overall</h1>
+	<br>
+	<h3 style="text-align: left; float: left">Winrate</h1>
+	<h3 style="text-align: right;">Pickrate</h1>
+	<div class="tab">
+		<button class="tablinks" onclick="openRegion(event, 'Demacia')">Demacia</button>
+		<button class="tablinks" onclick="openRegion(event, 'Freljord')">Freljord</button>
+		<button class="tablinks" onclick="openRegion(event, 'Ionia')">Ionia</button>
+		<button class="tablinks" onclick="openRegion(event, 'Noxus')">Noxus</button>
+		<button class="tablinks" onclick="openRegion(event, 'Piltover & Zaun')">Piltover & Zaun</button>
+		<button class="tablinks" onclick="openRegion(event, 'Shadow Isles')">Shadow Isles</button>
+	</div>
+	
+
+	<script>
+		function openRegion(evt, regionName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(regionName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+	</script>
+		
+	<!-- Tab content -->
+	<div id="Demacia" class="tabcontent">
+		{% for region in regions %}
+			{% if 'Demacia' in region.name  %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ region.name }}</p>
+					<div class="skill" style="text-align: center">
+						{% with totalWins=region.normalWins|add:region.expeditionWins totalRegionGames=region.normalTotal|add:region.expeditionTotal %}
+						<div class="winRateLevel" style="width: {{totalWins|div:totalRegionGames|mul:50}}%">
+								
+						</div>
+						{% endwith %}
+						{% with pickRate=region.normalTotal|add:region.expeditionTotal|div:totalGames|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+    	{% endfor %}
+	</div>
+		
+	<div id="Freljord" class="tabcontent">
+		{% for region in regions %}
+			{% if 'Freljord' in region.name  %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ region.name }}</p>
+					<div class="skill" style="text-align: center">
+						{% with totalWins=region.normalWins|add:region.expeditionWins totalRegionGames=region.normalTotal|add:region.expeditionTotal %}
+						<div class="winRateLevel" style="width: {{totalWins|div:totalRegionGames|mul:50}}%">
+								
+						</div>
+						{% endwith %}
+						{% with pickRate=region.normalTotal|add:region.expeditionTotal|div:totalGames|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+    	{% endfor %}
+	</div>
+		
+	<div id="Ionia" class="tabcontent">
+		{% for region in regions %}
+			{% if 'Ionia' in region.name  %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ region.name }}</p>
+					<div class="skill" style="text-align: center">
+						{% with totalWins=region.normalWins|add:region.expeditionWins totalRegionGames=region.normalTotal|add:region.expeditionTotal %}
+						<div class="winRateLevel" style="width: {{totalWins|div:totalRegionGames|mul:50}}%">
+								
+						</div>
+						{% endwith %}
+						{% with pickRate=region.normalTotal|add:region.expeditionTotal|div:totalGames|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	<div id="Noxus" class="tabcontent">
+		{% for region in regions %}
+			{% if 'Noxus' in region.name  %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ region.name }}</p>
+					<div class="skill" style="text-align: center">
+						{% with totalWins=region.normalWins|add:region.expeditionWins totalRegionGames=region.normalTotal|add:region.expeditionTotal %}
+						<div class="winRateLevel" style="width: {{totalWins|div:totalRegionGames|mul:50}}%">
+								
+						</div>
+						{% endwith %}
+						{% with pickRate=region.normalTotal|add:region.expeditionTotal|div:totalGames|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+		
+	<div id="Piltover & Zaun" class="tabcontent">
+		{% for region in regions %}
+			{% if 'Piltover & Zaun' in region.name  %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ region.name }}</p>
+					<div class="skill" style="text-align: center">
+						{% with totalWins=region.normalWins|add:region.expeditionWins totalRegionGames=region.normalTotal|add:region.expeditionTotal %}
+						<div class="winRateLevel" style="width: {{totalWins|div:totalRegionGames|mul:50}}%">
+								
+						</div>
+						{% endwith %}
+						{% with pickRate=region.normalTotal|add:region.expeditionTotal|div:totalGames|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+		
+	<div id="Shadow Isles" class="tabcontent">
+		{% for region in regions %}
+			{% if 'Shadow Isles' in region.name  %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ region.name }}</p>
+					<div class="skill" style="text-align: center">
+						{% with totalWins=region.normalWins|add:region.expeditionWins totalRegionGames=region.normalTotal|add:region.expeditionTotal %}
+						<div class="winRateLevel" style="width: {{totalWins|div:totalRegionGames|mul:50}}%">
+								
+						</div>
+						{% endwith %}
+						{% with pickRate=region.normalTotal|add:region.expeditionTotal|div:totalGames|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock content %}

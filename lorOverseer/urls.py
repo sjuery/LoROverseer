@@ -20,28 +20,29 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from users import views as user_views
 from stats import views as stat_views
-from stats.views import StatsListView, StatsDetailView, StatsCreateView, StatsUpdateView, StatsDeleteView, UserGameListView
+from stats.views import StatsDetailView, UserGameListView
 
 urlpatterns = [
-    path('', stat_views.Home, name='stats'),
-    path('stats/games/', StatsListView.as_view(), name='games'),
-    path('stats/games/<int:pk>/', StatsDetailView.as_view(), name='gameDetails'),
+    path('', stat_views.Overall, name='stats'),
+    path('stats/', stat_views.Overall, name='normalStats'),
+    path('stats/normal', stat_views.Normal, name='normalStats'),
+    path('stats/expeditions', stat_views.Expedition, name='expeditionStats'),
+    path('stats/games/', UserGameListView.as_view(), name='games'),
+    path('stats/game/<int:pk>/', StatsDetailView.as_view(), name='gameDetails'),
     path('stats/game/', stat_views.Replay, name='gameDetails'),
-    path('stats/games/create/', StatsCreateView.as_view(), name='gameCreate'),
-    path('stats/games/<int:pk>/update/', StatsUpdateView.as_view(), name='gameUpdate'),
-    path('stats/games/<int:pk>/delete/', StatsDeleteView.as_view(), name='gameDelete'),
     path('about/', stat_views.About, name='about'),
-    path('register/', user_views.Register, name='register'),
     path('profile/', UserGameListView.as_view(), name='profile'),
-    path('profile/games/', UserGameListView.as_view(), name='profileGames'),
+    #Account Management
+    path('register/', user_views.Register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    path('admin/', admin.site.urls),
+    #Password Management
     path('passwordReset/', auth_views.PasswordResetView.as_view(template_name='users/passwordReset.html'), name='passwordReset'),
     path('passwordReset/done/', auth_views.PasswordResetDoneView.as_view(template_name='users/passwordResetDone.html'), name='password_reset_done'),
     path('passwordReset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/passwordResetConfirm.html'), name='password_reset_confirm'),
     path('passwordReset/complete', auth_views.PasswordResetCompleteView.as_view(template_name='users/passwordResetComplete.html'), name='password_reset_complete'),
     path('addGame/', stat_views.AddData, name='addGame'),
-    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:

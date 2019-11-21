@@ -23,9 +23,10 @@ class Game(models.Model):
 
 class Region(models.Model):
 	name = models.CharField(max_length=100, unique=True, primary_key=True)
-	wins = models.IntegerField()
-	losses = models.IntegerField()
-	totalGames = models.IntegerField()
+	normalWins = models.IntegerField()
+	normalTotal = models.IntegerField()
+	expeditionWins = models.IntegerField()
+	expeditionTotal = models.IntegerField()
     
 	def __str__(self):
 		return self.name
@@ -33,7 +34,6 @@ class Region(models.Model):
 class Deck(models.Model):
 	code = models.CharField(max_length=100, unique=True, primary_key=True)
 	wins = models.IntegerField()
-	losses = models.IntegerField()
 	totalGames = models.IntegerField()
     
 	def __str__(self):
@@ -41,9 +41,10 @@ class Deck(models.Model):
 
 class Card(models.Model):
 	id = models.CharField(max_length=10, unique=True, primary_key=True)
-	wins = models.IntegerField()
-	losses = models.IntegerField()
-	totalGames = models.IntegerField()
+	normalWins = models.IntegerField()
+	normalTotal = models.IntegerField()
+	expeditionWins = models.IntegerField()
+	expeditionTotal = models.IntegerField()
     
 	def __str__(self):
 		return self.id

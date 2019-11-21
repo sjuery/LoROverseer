@@ -12,19 +12,26 @@ from . forms import AddGameDataForm, AddReplayData
 from . models import Game, Region, Deck, Card
 from users.models import Profile
 
-def Home(request):
+def Overall(request):
     totalGames = 0
 
     for region in Region.objects.all():
-        totalGames += region.totalGames
-    return render(request, 'stats/home.html', {'regions': Region.objects.all(), 'totalGames':totalGames})
+        totalGames += region.normalTotal + region.expeditionTotal
+    return render(request, 'stats/overall.html', {'regions': Region.objects.all(), 'totalGames':totalGames})
 
-class StatsListView(ListView):
-    model = Game
-    template_name = 'stats/home.html'
-    context_object_name = 'games'
-    ordering = ['-datePlayed']
-    paginate_by = 5
+def Normal(request):
+    totalGames = 0
+
+    for region in Region.objects.all():
+        totalGames += region.normalTotal
+    return render(request, 'stats/normal.html', {'regions': Region.objects.all(), 'totalGames':totalGames})
+
+def Expedition(request):
+    totalGames = 0
+
+    for region in Region.objects.all():
+        totalGames += region.expeditionTotal
+    return render(request, 'stats/expedition.html', {'regions': Region.objects.all(), 'totalGames':totalGames})
 
 class UserGameListView(ListView):
     model = Game
@@ -41,42 +48,6 @@ class StatsDetailView(DetailView):
     template_name = 'stats/gameDetails.html'
     context_object_name = 'game'
 
-class StatsCreateView(LoginRequiredMixin, CreateView):
-    model = Game
-    fields = ['player', 'opponent']
-    template_name = 'stats/gameCreate.html'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-class StatsUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Game
-    fields = ['player', 'opponent']
-    template_name = 'stats/gameCreate.html'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-    
-    def test_func(self):
-        game = self.get_object()
-        if self.request.user == game.user:
-            return True
-        return True
-
-class StatsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Game
-    template_name = 'stats/gameDelete.html'
-    context_object_name = 'game'
-    success_url = '/'
-    
-    def test_func(self):
-        game = self.get_object()
-        if self.request.user == game.user:
-            return True
-        return True
-
 @csrf_exempt
 def AddData(request):
     if request.method == 'POST':
@@ -88,53 +59,59 @@ def AddData(request):
             replay = replayForm.cleaned_data.get('replay')
             secretKey = dataForm.cleaned_data.get('secretKey')
             win = dataForm.cleaned_data.get('win')
+            gameMode = dataForm.cleaned_data.get('gameMode')
             data = json.loads(replay)
             dataForm.instance.user = Profile.objects.get(secretKey=secretKey).user
             newPost = dataForm.save()
             #Region
             try:
                 region = Region.objects.get(name=newPost.regions)
-                if win:
-                    region.wins += 1
+                if gameMode == 'Normal':
+                    if win:
+                        region.normalWins += 1
+                    region.normalTotal += 1
                 else:
-                    region.losses += 1
-                region.totalGames += 1
+                    if win:
+                        region.expeditionWins += 1
+                    region.expeditionTotal += 1
             except:
                 if win:
-                    region = Region(name=newPost.regions, wins=1, losses=0, totalGames=1)
-                else:
-                    region = Region(name=newPost.regions, wins=0, losses=1, totalGames=1)
-            print(newPost.regions)
+                    if gameMode == 'Normal':
+                        region = Region(name=newPost.regions, normalWins=1, totalWins=1, expeditionWins=0, expeditionTotal=0)
+                    else:
+                        region = Region(name=newPost.regions, normalWins=0, totalWins=0, expeditionWins=1, expeditionTotal=1)
             region.save()
             #Decks
             try:
                 deck = Deck.objects.get(code=newPost.deckCode)
                 if win:
                     deck.wins += 1
-                else:
-                    deck.losses += 1
                 deck.totalGames += 1
             except:
                 if win:
-                    deck = Deck(code=newPost.deckCode, wins=1, losses=0, totalGames=1)
+                    deck = Deck(code=newPost.deckCode, wins=1, totalGames=1)
                 else:
-                    deck = Deck(code=newPost.deckCode, wins=0, losses=1, totalGames=1)
+                    deck = Deck(code=newPost.deckCode, wins=0, totalGames=1)
             deck.save()
             #Cards
             unpackedDeck = LoRDeck.from_deckcode(newPost.deckCode)
             for card in list(unpackedDeck):
                 try:
                     newCard = Card.objects.get(id=card[2:])
-                    if win:
-                        newCard.wins += 1
+                    if gameMode == 'Normal':
+                        if win:
+                            newCard.normalWins += 1
+                        newCard.normalTotal += 1
                     else:
-                        newCard.losses += 1
-                    newCard.totalGames += 1
+                        if win:
+                            newCard.expeditionWins += 1
+                        newCard.expeditionTotal += 1
                 except:
                     if win:
-                        newCard = Card(id=card[2:], wins=1, losses=0, totalGames=1)
-                    else:
-                        newCard = Card(id=card[2:], wins=0, losses=1, totalGames=1)
+                        if gameMode == 'Normal':
+                            newCard = Card(id=card[2:], normalWins=1, totalWins=1, expeditionWins=0, expeditionTotal=0)
+                        else:
+                            newCard = Card(id=card[2:], normalWins=0, totalWins=0, expeditionWins=1, expeditionTotal=1)
                 newCard.save()
             with storage.open(f'replayData/{newPost.pk}.json', 'w') as f:
                 json.dump(data, f)
