@@ -36,37 +36,37 @@ The website (https://loroverseer.herokuapp.com/), was create with python and dja
 
 The main information the website stores are stored under using django models on Postgres:
 
--Game:
-    -User (Primary Key, User Model of the Host Found using the secretKey)
-    -Player (string containing the host players username)
-    -Opponent (string containing the current games opponent)
-    -DeckCode (string containing the deck of the host during this game)
-    -GameMode (string with either "Normal", "Ranked", or "Expedition")
-    -Regions (string with the region mixes found in the players deck 2 regions if normal or ranked, 3 if expedition)
-    -ExpeditionWins (int with the amount of wins in the current expedition)
-    -ExpeditionLosses (int with the amount of losses in the current expedition)
-    -Win (boolean that returns true if the host won the match)
-    -DatePlayed (Date and time the game was played at)
+* Game:
+    * User (Primary Key, User Model of the Host Found using the secretKey)
+    * Player (string containing the host players username)
+    * Opponent (string containing the current games opponent)
+    * DeckCode (string containing the deck of the host during this game)
+    * GameMode (string with either "Normal", "Ranked", or "Expedition")
+    * Regions (string with the region mixes found in the players deck 2 regions if normal or ranked, 3 if expedition)
+    * ExpeditionWins (int with the amount of wins in the current expedition)
+    * ExpeditionLosses (int with the amount of losses in the current expedition)
+    * Win (boolean that returns true if the host won the match)
+    * DatePlayed (Date and time the game was played at)
 
--Region:
-    -Name (Primary Key, Name of each region combinations found seperated by a +)
-    -NormalWins (integer with the amount of wins said region has had in normal mode)
-    -NormalTotal (integer with the amount of total games said region has had in normal mode)
-    -ExpeditionWins (integer with the amount of wins said region has had in expedition mode)
-    -ExpeditionTotal (integer with the amount of total games said region has had in expedition mode)
+* Region:
+    * Name (Primary Key, Name of each region combinations found seperated by a +)
+    * NormalWins (integer with the amount of wins said region has had in normal mode)
+    * NormalTotal (integer with the amount of total games said region has had in normal mode)
+    * ExpeditionWins (integer with the amount of wins said region has had in expedition mode)
+    * ExpeditionTotal (integer with the amount of total games said region has had in expedition mode)
 
--Deck:
-    -Code (Primary Key, string with the deckCode)
-    -Regions (string with the region combinations of said deck. seperated by a +)
-    -Wins (integer with the total wins with this deck No need to track what mode this deck comes from 40 cards means normal mode, less then that means expeditions)
-    -TotalGames (integer with the total games played with this deck)
+* Deck:
+    * Code (Primary Key, string with the deckCode)
+    * Regions (string with the region combinations of said deck. seperated by a +)
+    * Wins (integer with the total wins with this deck No need to track what mode this deck comes from 40 cards means normal mode, less then that means expeditions)
+    * TotalGames (integer with the total games played with this deck)
 
--Card:
-    -ID (Primary Key, string with the ID the card)
-    -NormalWins (integer with the amount of wins said card has had in normal mode)
-    -NormalTotal (integer with the amount of total games said card has had in normal mode)
-    -ExpeditionWins (integer with the amount of wins said card has had in expedition mode)
-    -ExpeditionTotal (integer with the amount of total games said card has had in expedition mode)
+* Card:
+    * ID (Primary Key, string with the ID the card)
+    * NormalWins (integer with the amount of wins said card has had in normal mode)
+    * NormalTotal (integer with the amount of total games said card has had in normal mode)
+    * ExpeditionWins (integer with the amount of wins said card has had in expedition mode)
+    * ExpeditionTotal (integer with the amount of total games said card has had in expedition mode)
     
 The rectangle position for each games are stored in JSON files on Amazon Web Services. Their structure is somewhere along those lines:
 ```
