@@ -12,7 +12,6 @@
 - [Idea / Solution](#idea)
 - [Dependencies / Limitations](#limitations)
 - [Future Scope](#future_scope)
-- [Setting up a local environment](#getting_started)
 - [Usage](#usage)
 - [Authors](#authors)
 
@@ -93,64 +92,22 @@ The rectangle position for each games are stored in JSON files on Amazon Web Ser
 
 ## ⛓️ Dependencies / Limitations <a name = "limitations"></a>
 The python version of the project has the following dependencies:
-- JSON
-- Requests
-- lor_deckcodes
 
-All of which can be installed using pip
-
-I have however also included a rar with an executable that will be able to run without the need of Python or any of the above dependencies.
+All of these can be found in the requirments.txt file
 
 ## 🚀 Future Scope <a name = "future_scope"></a>
-Gonna fill this in after the project is over
-
-## 🏁 Getting Started <a name = "getting_started"></a>
-These instructions will get you a copy of the project up and running on your local machine for development 
-and testing purposes.
-
-### Prerequisites
-
-```
-If you download the RaR there are no Prerequisites, however, if you want to run the Python version:
-Python 3.8 (Only version I tested it on but im sure it works on 3.7)
-The dependencies found here [Dependencies](#limitations)
-```
-
-### Installing
-
-To install and run the project with the rar file:
-
-```
-1) Download the project
-2) Unrar the rar file named gatherer.rar
-3) Extract it wherever you want
-4) Open the gatherer folder
-5) run the gatherer.exe file
-```
-
-To install and run the project with the .py file
-
-```
-1) Clone the repo (https://github.com/sjuery/LoRDataGatherer.git)
-2) cd into the directory
-3) pip install 'nameOfDependencies'
-4) python gatherer.py
-```
+Gonna fill this in after the project is over because the deadline is almost up
 
 ## 🎈 Usage <a name="usage"></a>
-Once the app is running it will prompt you for a secret key. In order to get your secret key:
-1) Create an account if you haven't already (https://loroverseer.herokuapp.com/register/)
-2) Login to your account (https://loroverseer.herokuapp.com/login/)
-3) Head over to your profile (https://loroverseer.herokuapp.com/profile/)
-4) Copy and paste the SecretKey from the website to the console.
-5) Press enter
-6) Play Legends Of Runeterra
-7) Track your stats on your profile page
-
+Simply go to the following link:
+https://loroverseer.herokuapp.com/
+Creating an account will allow you to track your Legends of Runeterra games using this app (https://github.com/sjuery/LoRDataGatherer)
+Accessing the website without an account will still allow you to see general statistics on all games played with the app running.
 
 ## ⛏️ Built With <a name = "tech_stack"></a>
 - [Python](https://www.python.org/) - Python
-- [LoRDeckCodes](https://github.com/Rafalonso/LoRDeckCodesPython) - LoRDeckCodes
+- [Django](https://www.djangoproject.com/) - DJango
+- [AWS](https://aws.amazon.com/) - AWS
 
 ## ✍️ Authors <a name = "authors"></a>
 - [@sjuery](https://github.com/sjuery)
