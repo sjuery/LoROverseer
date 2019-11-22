@@ -34,7 +34,7 @@
 			{% if 'DE' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						{% if card.normalTotal != 0 %}
+						{% if card.normalTotal != 0 and demaciaNormal != 0 %}
 							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
@@ -50,7 +50,7 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						{% if card.expeditionTotal != 0 %}
+						{% if card.expeditionTotal != 0 and demaciaExpedition != 0 %}
 							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
@@ -72,7 +72,7 @@
 			{% if 'FR' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						{% if card.normalTotal != 0 %}
+						{% if card.normalTotal != 0 and freljordNormal != 0 %}
 							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
@@ -88,7 +88,7 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						{% if card.expeditionTotal != 0 %}
+						{% if card.expeditionTotal != 0 and freljordExpedition != 0 %}
 							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
@@ -110,7 +110,7 @@
 			{% if 'IO' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						{% if card.normalTotal != 0 %}
+						{% if card.normalTotal != 0 and ioniaNormal != 0 %}
 							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
@@ -126,7 +126,7 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						{% if card.expeditionTotal != 0 %}
+						{% if card.expeditionTotal != 0 and ioniaExpedition != 0 %}
 							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
@@ -148,7 +148,7 @@
 			{% if 'NX' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						{% if card.normalTotal != 0 %}
+						{% if card.normalTotal != 0 and noxusNormal != 0 %}
 							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
@@ -164,7 +164,7 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						{% if card.expeditionTotal != 0 %}
+						{% if card.expeditionTotal != 0 and noxusExpedition != 0 %}
 							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
@@ -186,7 +186,7 @@
 			{% if 'PZ' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						{% if card.normalTotal != 0 %}
+						{% if card.normalTotal != 0 and pazNormal != 0 %}
 							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
@@ -202,7 +202,7 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						{% if card.expeditionTotal != 0 %}
+						{% if card.expeditionTotal != 0 and pazExpedition != 0%}
 							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
@@ -224,7 +224,7 @@
 			{% if 'SI' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						{% if card.normalTotal != 0 %}
+						{% if card.normalTotal != 0 and shadowNormal != 0 %}
 							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
@@ -240,7 +240,7 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						{% if card.expeditionTotal != 0 %}
+						{% if card.expeditionTotal != 0 and shadowExpedition != 0 %}
 							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									

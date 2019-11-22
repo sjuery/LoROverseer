@@ -34,6 +34,33 @@ def Expedition(request):
         totalGames += region.expeditionTotal
     return render(request, 'stats/expedition.html', {'regions': Region.objects.all(), 'totalGames':totalGames})
 
+def UpdateStats(requests):
+    for game in Game.objects.all():
+        unpackedDeck = LoRDeck.from_deckcode(game.deckCode)
+        for card in list(unpackedDeck):
+            try:
+                newCard = Card.objects.get(id=card[2:])
+                if game.gameMode == 'Normal':
+                    if game.win:
+                        newCard.normalWins += 1
+                    newCard.normalTotal += 1
+                else:
+                    if game.win:
+                        newCard.expeditionWins += 1
+                    newCard.expeditionTotal += 1
+            except:
+                if game.win:
+                    if game.gameMode == 'Normal':
+                        newCard = Card(id=card[2:], normalWins=1, totalWins=1, expeditionWins=0, expeditionTotal=0)
+                    else:
+                        newCard = Card(id=card[2:], normalWins=0, totalWins=0, expeditionWins=1, expeditionTotal=1)
+                else:
+                    if game.gameMode == 'Normal':
+                        newCard = Card(id=card[2:], normalWins=0, normalTotal=1, expeditionWins=0, expeditionTotal=0)
+                    else:
+                        newCard = Card(id=card[2:], normalWins=0, normalTotal=0, expeditionWins=0, expeditionTotal=1)
+            newCard.save()
+
 def Cards(request):
     r = requests.get("https://lor.mln.cx/Set1/en_us/data/set1-en_us.json")
     data = r.json()
@@ -103,9 +130,14 @@ def AddData(request):
             except:
                 if win:
                     if gameMode == 'Normal':
-                        region = Region(name=newPost.regions, normalWins=1, totalWins=1, expeditionWins=0, expeditionTotal=0)
+                        region = Region(name=newPost.regions, normalWins=1, normalTotal=1, expeditionWins=0, expeditionTotal=0)
                     else:
-                        region = Region(name=newPost.regions, normalWins=0, totalWins=0, expeditionWins=1, expeditionTotal=1)
+                        region = Region(name=newPost.regions, normalWins=0, normalTotal=0, expeditionWins=1, expeditionTotal=1)
+                else:
+                    if gameMode == 'Normal':
+                        region = Region(name=newPost.regions, normalWins=0, normalTotal=1, expeditionWins=0, expeditionTotal=0)
+                    else:
+                        region = Region(name=newPost.regions, normalWins=0, normalTotal=0, expeditionWins=0, expeditionTotal=1)
             region.save()
             #Decks
             try:
@@ -138,6 +170,11 @@ def AddData(request):
                             newCard = Card(id=card[2:], normalWins=1, totalWins=1, expeditionWins=0, expeditionTotal=0)
                         else:
                             newCard = Card(id=card[2:], normalWins=0, totalWins=0, expeditionWins=1, expeditionTotal=1)
+                    else:
+                        if gameMode == 'Normal':
+                            newCard = Card(id=card[2:], normalWins=0, normalTotal=1, expeditionWins=0, expeditionTotal=0)
+                        else:
+                            newCard = Card(id=card[2:], normalWins=0, normalTotal=0, expeditionWins=0, expeditionTotal=1)
                 newCard.save()
             with storage.open(f'replayData/{newPost.pk}.json', 'w') as f:
                 json.dump(data, f)
