@@ -51,9 +51,9 @@ def UpdateStats(requests):
             except:
                 if game.win:
                     if game.gameMode == 'Normal':
-                        newCard = Card(id=card[2:], normalWins=1, totalWins=1, expeditionWins=0, expeditionTotal=0)
+                        newCard = Card(id=card[2:], normalWins=1, normalTotal=1, expeditionWins=0, expeditionTotal=0)
                     else:
-                        newCard = Card(id=card[2:], normalWins=0, totalWins=0, expeditionWins=1, expeditionTotal=1)
+                        newCard = Card(id=card[2:], normalWins=0, normalTotal=0, expeditionWins=1, expeditionTotal=1)
                 else:
                     if game.gameMode == 'Normal':
                         newCard = Card(id=card[2:], normalWins=0, normalTotal=1, expeditionWins=0, expeditionTotal=0)
