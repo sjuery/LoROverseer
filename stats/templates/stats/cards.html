@@ -31,16 +31,15 @@
 	<!-- Tab content -->
 	<div id="Demacia" class="tabcontent">
 		{% for card in cards %}
-			{% if "DE" in card.id %}
-				<div class="skillBox" style="overflow: auto;
-				width: 100%; display: flex;">
+			{% if 'DE' in card.id %}
+				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						<h3>Normal Winrate {{ card.normalWins }}</h3>
-						<div class="winRateLevelNF" style="width: {{35}}%">
+						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Normal Pickrate</h3>
-						<div class="pickRateLevel" style="width: {{35}}%">
+						<h3>Normal Pickrate: {{ card.normalTotal|div:demaciaNormal|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:demaciaNormal|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -49,12 +48,12 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
-						<div class="winRateLevelNF" style="width: 59%%">
+						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Expedition Pickrate</h3>
-						<div class="pickRateLevel" style="width: 55%">
+						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:demaciaExpedition|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:demaciaExpedition|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -66,16 +65,15 @@
 		
 	<div id="Freljord" class="tabcontent">
 		{% for card in cards %}
-			{% if "FR" in card.id %}
-				<div class="skillBox" style="overflow: auto;
-				width: 100%; display: flex;">
+			{% if 'FR' in card.id %}
+				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						<h3>Normal Winrate {{ card.normalWins }}</h3>
-						<div class="winRateLevelNF" style="width: {{35}}%">
+						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Normal Pickrate</h3>
-						<div class="pickRateLevel" style="width: {{35}}%">
+						<h3>Normal Pickrate: {{ card.normalTotal|div:freljordNormal|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:freljordNormal|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -84,12 +82,12 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
-						<div class="winRateLevelNF" style="width: 59%%">
+						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Expedition Pickrate</h3>
-						<div class="pickRateLevel" style="width: 55%">
+						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:freljordExpedition|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:freljordExpedition|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -101,16 +99,15 @@
 		
 	<div id="Ionia" class="tabcontent">
 		{% for card in cards %}
-			{% if "IO" in card.id %}
-				<div class="skillBox" style="overflow: auto;
-				width: 100%; display: flex;">
+			{% if 'IO' in card.id %}
+				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						<h3>Normal Winrate {{ card.normalWins }}</h3>
-						<div class="winRateLevelNF" style="width: {{35}}%">
+						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Normal Pickrate</h3>
-						<div class="pickRateLevel" style="width: {{35}}%">
+						<h3>Normal Pickrate: {{ card.normalTotal|div:ioniaNormal|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:ioniaNormal|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -119,12 +116,12 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
-						<div class="winRateLevelNF" style="width: 59%%">
+						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Expedition Pickrate</h3>
-						<div class="pickRateLevel" style="width: 55%">
+						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:ioniaExpedition|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:ioniaExpedition|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -136,16 +133,15 @@
 
 	<div id="Noxus" class="tabcontent">
 		{% for card in cards %}
-			{% if "NX" in card.id %}
-				<div class="skillBox" style="overflow: auto;
-				width: 100%; display: flex;">
+			{% if 'NX' in card.id %}
+				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						<h3>Normal Winrate {{ card.normalWins }}</h3>
-						<div class="winRateLevelNF" style="width: {{35}}%">
+						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Normal Pickrate</h3>
-						<div class="pickRateLevel" style="width: {{35}}%">
+						<h3>Normal Pickrate: {{ card.normalTotal|div:noxusNormal|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:noxusNormal|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -154,12 +150,12 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
-						<div class="winRateLevelNF" style="width: 59%%">
+						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Expedition Pickrate</h3>
-						<div class="pickRateLevel" style="width: 55%">
+						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:noxusExpedition|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:noxusExpedition|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -171,16 +167,15 @@
 		
 	<div id="Piltover & Zaun" class="tabcontent">
 		{% for card in cards %}
-			{% if "PZ" in card.id %}
-				<div class="skillBox" style="overflow: auto;
-				width: 100%; display: flex;">
+			{% if 'PZ' in card.id %}
+				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						<h3>Normal Winrate {{ card.normalWins }}</h3>
-						<div class="winRateLevelNF" style="width: {{35}}%">
+						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Normal Pickrate</h3>
-						<div class="pickRateLevel" style="width: {{35}}%">
+						<h3>Normal Pickrate: {{ card.normalTotal|div:pazNormal|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:pazNormal|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -189,12 +184,12 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
-						<div class="winRateLevelNF" style="width: 59%%">
+						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Expedition Pickrate</h3>
-						<div class="pickRateLevel" style="width: 55%">
+						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:pazExpedition|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:pazExpedition|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -206,16 +201,15 @@
 		
 	<div id="Shadow Isles" class="tabcontent">
 		{% for card in cards %}
-			{% if "SI" in card.id %}
-				<div class="skillBox" style="overflow: auto;
-				width: 100%; display: flex;">
+			{% if 'SI' in card.id %}
+				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						<h3>Normal Winrate {{ card.normalWins }}</h3>
-						<div class="winRateLevelNF" style="width: {{35}}%">
+						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Normal Pickrate</h3>
-						<div class="pickRateLevel" style="width: {{35}}%">
+						<h3>Normal Pickrate: {{ card.normalTotal|div:shadowNormal|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:shadowNormal|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
@@ -224,12 +218,12 @@
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
-						<div class="winRateLevelNF" style="width: 59%%">
+						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Expedition Pickrate</h3>
-						<div class="pickRateLevel" style="width: 55%">
+						<h3>Expedition Pickrate: {{ card.expedition|div:shadowExpeditionTotal|mul:100 }}%</h3>
+						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:shadowExpedition|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
