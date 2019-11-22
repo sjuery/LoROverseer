@@ -101,7 +101,9 @@ Gonna fill this in after the project is over because the deadline is almost up
 ## 🎈 Usage <a name="usage"></a>
 Simply go to the following link:
 https://loroverseer.herokuapp.com/
+
 Creating an account will allow you to track your Legends of Runeterra games using this app (https://github.com/sjuery/LoRDataGatherer)
+
 Accessing the website without an account will still allow you to see general statistics on all games played with the app running.
 
 ## ⛏️ Built With <a name = "tech_stack"></a>
