@@ -145,17 +145,18 @@ def AddData(request):
                         region = Region(name=newPost.regions, normalWins=0, normalTotal=0, expeditionWins=0, expeditionTotal=1)
             region.save()
             #Decks
-            try:
-                deck = Deck.objects.get(code=newPost.deckCode)
-                if win:
-                    deck.wins += 1
-                deck.totalGames += 1
-            except:
-                if win:
-                    deck = Deck(code=newPost.deckCode, wins=1, totalGames=1)
-                else:
-                    deck = Deck(code=newPost.deckCode, wins=0, totalGames=1)
-            deck.save()
+            if gameMode == 'Normal':
+                try:
+                    deck = Deck.objects.get(code=newPost.deckCode)
+                    if win:
+                        deck.wins += 1
+                    deck.totalGames += 1
+                except:
+                    if win:
+                        deck = Deck(code=newPost.deckCode, wins=1, totalGames=1, regions=newPost.regions)
+                    else:
+                        deck = Deck(code=newPost.deckCode, wins=0, totalGames=1, regions=newPost.regions)
+                deck.save()
             #Cards
             unpackedDeck = LoRDeck.from_deckcode(newPost.deckCode)
             for card in list(unpackedDeck):
