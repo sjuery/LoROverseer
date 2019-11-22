@@ -8,14 +8,15 @@
 			<div class="media-body">
 				<div class="article-metadata">
 					<small class="mr-2">{{ game.user }}</small>
-					<small class="text-muted">{{ game.datePlayed|date:"F d, Y" }}</small>
+					<small class="text-muted">{{ game.datePlayed|date:"F d, Y, H:i" }}</small>
 				</div>
-				<h2><a class="article-title" href="{% url 'gameDetails' game.id %}">{{ game.player }} played {{ game.opponent }}</a></h2>
 				{% if game.win == True %}
-					<p class="article-content">Winner was {{ game.player }}</p>
+          <h2><a class="article-title" href="{% url 'replay' game.id 0 %}">{{ game.player }} beat {{ game.gameMode }} in {{ game.gameMode }} mode.</a></h2>
 				{% else %}
-					<p class="article-content">Winner was {{ game.opponent }}</p>
-				{% endif %}
+				  <h2><a class="article-title" href="{% url 'replay' game.id 0 %}">{{ game.player }} lost against {{ game.opponent }} in {{ game.gameMode }} mode.</a></h2>
+        {% endif %}
+        <div>Region(s): {{ game.regions }}</div>
+        <div>Deck: {{game.deckCode}}</div>
 			</div>
         </article>
     {% endfor %}

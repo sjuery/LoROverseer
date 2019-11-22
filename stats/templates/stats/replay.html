@@ -1,8 +1,24 @@
 {% extends "stats/base.html" %}
 {% load mathfilters %}
 {% block content %}
-	<h1 class="mb-3">Replay</h1>
+	<script>
+		document.onkeydown = function(e) { // or document.onkeypress
+			e = e || window.event;
+			if (e.keyCode == 37) {
+				window.location.href = {{ previousPage }};
+			}
+			else if (e.keyCode == 39) {
+				window.location.href = {{ nextPage }};
+			}
+		};
+	</script>
+
+	<h4 style="text-align: center;">Replay: use left and right arrows to change frames</h4>
 	{% for card in cards %}
-		<img src="" style="position:absolute; top: {{ card.TopLeftY|div:2 }}px; left: {{ card.TopLeftX|div:2 }}px; width: {{ card.Width|div:2 }}px; height: {{ card.Height|div:2 }}px;">
+		{% if card.CardCode != "face" %}
+			{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.CardCode|add:".png" as url %}
+				<img src="{{url}}" style="position:absolute; top: {{ card.TopLeftY|div:2 }}px; left: {{ card.TopLeftX|div:2 }}px; width: {{ card.Width|div:2 }}px; height: {{ card.Height|div:2 }}px;">
+			{% endwith %}
+		{% endif %}
     {% endfor %}
 {% endblock content %}

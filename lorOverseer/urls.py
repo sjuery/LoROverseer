@@ -20,7 +20,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from users import views as user_views
 from stats import views as stat_views
-from stats.views import StatsDetailView, UserGameListView
+from stats.views import UserGameListView
 
 urlpatterns = [
     path('', stat_views.Overall, name='stats'),
@@ -31,8 +31,7 @@ urlpatterns = [
     path('stats/decks/', stat_views.NormalDecks, name='deckStats'),
     path('stats/decks/normal/', stat_views.NormalDecks, name='deckNormalStats'),
     path('stats/games/', UserGameListView.as_view(), name='games'),
-    path('stats/game/<int:pk>/', StatsDetailView.as_view(), name='gameDetails'),
-    path('stats/game/', stat_views.Replay, name='gameDetails'),
+    path('stats/game/<int:pk>/<int:fn>', stat_views.Replay, name='replay'),
     path('about/', stat_views.About, name='about'),
     path('profile/', UserGameListView.as_view(), name='profile'),
     #Account Management
