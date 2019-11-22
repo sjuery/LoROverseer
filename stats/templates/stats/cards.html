@@ -234,7 +234,7 @@
 						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 								
 						</div>
-						<h3>Expedition Pickrate: {{ card.expedition|div:shadowExpeditionTotal|mul:100 }}%</h3>
+						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:shadowExpedition|mul:100 }}%</h3>
 						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:shadowExpedition|mul:100 }}%">
 								
 						</div>
