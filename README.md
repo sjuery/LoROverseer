@@ -30,48 +30,66 @@ Overseer's purpose will be to satisfy two recurring needs present in competitive
 
 The app (https://github.com/sjuery/LoRDataGatherer) will run in the background and access the Legends of Runeterra API, sending valuable information such as the deck code, rectangle positions, and game states to an online database where the data will be processed, organized and made accessible to players through a website. Once logged in, players will be able to review their match history and a detailed replay of any selected event with a wealth of valuable data. The site will provide access to a large variety of statistics such as - among others - the average winrate of a region, deck, or card. This will allow players with an account to compare themselves to the average player (and in the future the average player of a specific rank) and to analyze their strengths and weaknesses in order to most efficiently use the replay feature and improve their skills.
 
-Here is all the information that can be gathered from the API (More info on the official website https://developer.riotgames.com/docs/lor#game-client-api):
+The pitch for the app can be found here (https://gist.github.com/sjuery/b8cca22c480d1b3a76cfc90a77cb0e0b)
 
-http://localhost:21337/static-decklist:
+The website (https://loroverseer.herokuapp.com/), was create with python and django and stores its statistics using Postgres and AWS S3.
 
-- DeckCode (a string telling us what deck the host is currently playing )
-- CardsInDeck(a dictionary with every card in above mentioned deck)
+The main information the website stores are stored under using django models on Postgres:
 
-http://localhost:21337/positional-rectangles:
+-Game:
+    -User (Primary Key, User Model of the Host Found using the secretKey)
+    -Player (string containing the host players username)
+    -Opponent (string containing the current games opponent)
+    -DeckCode (string containing the deck of the host during this game)
+    -GameMode (string with either "Normal", "Ranked", or "Expedition")
+    -Regions (string with the region mixes found in the players deck 2 regions if normal or ranked, 3 if expedition)
+    -ExpeditionWins (int with the amount of wins in the current expedition)
+    -ExpeditionLosses (int with the amount of losses in the current expedition)
+    -Win (boolean that returns true if the host won the match)
+    -DatePlayed (Date and time the game was played at)
 
-- PlayerName (a string with the Username of the host)
-- OpponentName (a string with the Username of his opponent)
-- Screen (a dictionary with the width and height of the players screen)
-- rectangles (an array of dictionaries with information such as what card is on what screen coordinate)
+-Region:
+    -Name (Primary Key, Name of each region combinations found seperated by a +)
+    -NormalWins (integer with the amount of wins said region has had in normal mode)
+    -NormalTotal (integer with the amount of total games said region has had in normal mode)
+    -ExpeditionWins (integer with the amount of wins said region has had in expedition mode)
+    -ExpeditionTotal (integer with the amount of total games said region has had in expedition mode)
 
-http://localhost:21337/expeditions-state:
+-Deck:
+    -Code (Primary Key, string with the deckCode)
+    -Regions (string with the region combinations of said deck. seperated by a +)
+    -Wins (integer with the total wins with this deck No need to track what mode this deck comes from 40 cards means normal mode, less then that means expeditions)
+    -TotalGames (integer with the total games played with this deck)
 
-- IsActive (bool telling us if the player has an active expedition)
-- State (string that returns what the player is doing with the expedition)
-- Record (array of strings[Either win, or loss] indicating in what order the host won/lost their games)
-- Deck (array of strings with the cardCode of every card in deck)
-- Games (integer with the total amount of games)
-- Wins (integer with the amount of wins)
-- Losses (integer with the amount of losses)
-
-http://localhost:21337/game-result:
-
-- GameID (an integer with the ID of the game [resets everytime the client restarts])
-- LocalPlayerWon (a boolean indicating if the host won or lost the match)
-
-The LoRDataGatherer loops forever until closed and can detect when the player is in an active game by using the 'static-decklist' part of the API because the DeckCode will only be returned if a the player is currently in a game.
-
-Once the app knows the player is in an active game, it sets all of the data that will not change throughout the games entire duration such as:
-- PlayerName
-- OpponentName
-- DeckCode
-- Regions
-- Screen Size
-- Expedition wins,losses,total games...
-
-And once that is done, it adds every rectangle information found in the positional-rectangles part of the API to a dictionary (Does this every 5 seconds if the rectangles have changed position)
-
-Once the DeckCode finally returns null again, all of the information collected gets sent to my website using a post request. And the app begins searching for its next available game. 
+-Card:
+    -ID (Primary Key, string with the ID the card)
+    -NormalWins (integer with the amount of wins said card has had in normal mode)
+    -NormalTotal (integer with the amount of total games said card has had in normal mode)
+    -ExpeditionWins (integer with the amount of wins said card has had in expedition mode)
+    -ExpeditionTotal (integer with the amount of total games said card has had in expedition mode)
+    
+The rectangle position for each games are stored in JSON files on Amazon Web Services. Their structure is somewhere along those lines:
+```
+    {
+        frame0:
+        {
+            [
+                "CardID": 0,
+                "CardCode": "01DE001",
+                "TopLeftX": 800,
+                "TopLeftY": 900,
+                "Width": 252,
+                "Height": 373,
+                "LocalPlayer": true
+            ],
+            ...
+        },
+        frame1:
+        {
+            ...
+        }
+    }
+```
 
 ## ⛓️ Dependencies / Limitations <a name = "limitations"></a>
 The python version of the project has the following dependencies:
