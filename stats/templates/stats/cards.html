@@ -35,11 +35,11 @@
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
 						{% if card.normalTotal != 0 and demaciaNormal != 0 %}
-							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Normal Pickrate: {{ card.normalTotal|div:demaciaNormal|mul:100 }}%</h3>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:demaciaNormal|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:demaciaNormal|mul:100 }}%">
 									
 							</div>
@@ -53,11 +53,11 @@
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
 						{% if card.expeditionTotal != 0 and demaciaExpedition != 0 %}
-							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:demaciaExpedition|mul:100 }}%</h3>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:demaciaExpedition|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:demaciaExpedition|mul:100 }}%">
 									
 							</div>
@@ -77,11 +77,11 @@
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
 						{% if card.normalTotal != 0 and freljordNormal != 0 %}
-							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Normal Pickrate: {{ card.normalTotal|div:freljordNormal|mul:100 }}%</h3>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:freljordNormal|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:freljordNormal|mul:100 }}%">
 									
 							</div>
@@ -95,11 +95,11 @@
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
 						{% if card.expeditionTotal != 0 and freljordExpedition != 0 %}
-							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:freljordExpedition|mul:100 }}%</h3>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:freljordExpedition|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:freljordExpedition|mul:100 }}%">
 									
 							</div>
@@ -119,11 +119,11 @@
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
 						{% if card.normalTotal != 0 and ioniaNormal != 0 %}
-							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Normal Pickrate: {{ card.normalTotal|div:ioniaNormal|mul:100 }}%</h3>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:ioniaNormal|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:ioniaNormal|mul:100 }}%">
 									
 							</div>
@@ -137,11 +137,11 @@
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
 						{% if card.expeditionTotal != 0 and ioniaExpedition != 0 %}
-							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:ioniaExpedition|mul:100 }}%</h3>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:ioniaExpedition|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:ioniaExpedition|mul:100 }}%">
 									
 							</div>
@@ -161,11 +161,11 @@
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
 						{% if card.normalTotal != 0 and noxusNormal != 0 %}
-							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Normal Pickrate: {{ card.normalTotal|div:noxusNormal|mul:100 }}%</h3>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:noxusNormal|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:noxusNormal|mul:100 }}%">
 									
 							</div>
@@ -179,11 +179,11 @@
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
 						{% if card.expeditionTotal != 0 and noxusExpedition != 0 %}
-							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:noxusExpedition|mul:100 }}%</h3>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:noxusExpedition|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:noxusExpedition|mul:100 }}%">
 									
 							</div>
@@ -203,11 +203,11 @@
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
 						{% if card.normalTotal != 0 and pazNormal != 0 %}
-							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Normal Pickrate: {{ card.normalTotal|div:pazNormal|mul:100 }}%</h3>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:pazNormal|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:pazNormal|mul:100 }}%">
 									
 							</div>
@@ -221,11 +221,11 @@
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
 						{% if card.expeditionTotal != 0 and pazExpedition != 0%}
-							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:pazExpedition|mul:100 }}%</h3>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:pazExpedition|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:pazExpedition|mul:100 }}%">
 									
 							</div>
@@ -245,11 +245,11 @@
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
 						{% if card.normalTotal != 0 and shadowNormal != 0 %}
-							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Normal Pickrate: {{ card.normalTotal|div:shadowNormal|mul:100 }}%</h3>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:shadowNormal|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:shadowNormal|mul:100 }}%">
 									
 							</div>
@@ -263,11 +263,11 @@
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
 						{% if card.expeditionTotal != 0 and shadowExpedition != 0 %}
-							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100|floatformat:"0" }}%</h3>
 							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
 									
 							</div>
-							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:shadowExpedition|mul:100 }}%</h3>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:shadowExpedition|mul:100|floatformat:"0" }}%</h3>
 							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:shadowExpedition|mul:100 }}%">
 									
 							</div>
