@@ -39,26 +39,28 @@
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
 							</div>
-						<h3>Normal Pickrate: {{ card.normalTotal|div:demaciaNormal|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:demaciaNormal|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:demaciaNormal|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:demaciaNormal|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
 						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
-								
-						</div>
-						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:demaciaExpedition|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:demaciaExpedition|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+						{% if card.expeditionTotal != 0 %}
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
+									
+							</div>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:demaciaExpedition|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:demaciaExpedition|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 				</div>
 			{% endif %}
@@ -75,26 +77,28 @@
 							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 									
 							</div>
-						<h3>Normal Pickrate: {{ card.normalTotal|div:freljordNormal|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:freljordNormal|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:freljordNormal|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:freljordNormal|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
 						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
-								
-						</div>
-						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:freljordExpedition|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:freljordExpedition|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+						{% if card.expeditionTotal != 0 %}
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
+									
+							</div>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:freljordExpedition|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:freljordExpedition|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 				</div>
 			{% endif %}
@@ -107,30 +111,32 @@
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
 						{% if card.normalTotal != 0 %}
-						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
-								
-						</div>
-						<h3>Normal Pickrate: {{ card.normalTotal|div:ioniaNormal|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:ioniaNormal|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
+									
+							</div>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:ioniaNormal|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:ioniaNormal|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
 						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
-								
-						</div>
-						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:ioniaExpedition|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:ioniaExpedition|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+						{% if card.expeditionTotal != 0 %}
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
+									
+							</div>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:ioniaExpedition|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:ioniaExpedition|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 				</div>
 			{% endif %}
@@ -143,30 +149,32 @@
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
 						{% if card.normalTotal != 0 %}
-						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
-								
-						</div>
-						<h3>Normal Pickrate: {{ card.normalTotal|div:noxusNormal|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:noxusNormal|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
+									
+							</div>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:noxusNormal|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:noxusNormal|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
 						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
-								
-						</div>
-						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:noxusExpedition|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:noxusExpedition|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+						{% if card.expeditionTotal != 0 %}
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
+									
+							</div>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:noxusExpedition|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:noxusExpedition|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 				</div>
 			{% endif %}
@@ -179,30 +187,32 @@
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
 						{% if card.normalTotal != 0 %}
-						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
-								
-						</div>
-						<h3>Normal Pickrate: {{ card.normalTotal|div:pazNormal|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:pazNormal|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
+									
+							</div>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:pazNormal|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:pazNormal|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
 						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
-								
-						</div>
-						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:pazExpedition|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:pazExpedition|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+						{% if card.expeditionTotal != 0 %}
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
+									
+							</div>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:pazExpedition|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:pazExpedition|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 				</div>
 			{% endif %}
@@ -215,30 +225,32 @@
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
 						{% if card.normalTotal != 0 %}
-						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
-								
-						</div>
-						<h3>Normal Pickrate: {{ card.normalTotal|div:shadowNormal|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:shadowNormal|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
+									
+							</div>
+							<h3>Normal Pickrate: {{ card.normalTotal|div:shadowNormal|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.normalTotal|div:shadowNormal|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
 						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
 					{% endwith %}
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
-						<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
-								
-						</div>
-						<h3>Expedition Pickrate: {{ card.expeditionTotal|div:shadowExpedition|mul:100 }}%</h3>
-						<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:shadowExpedition|mul:100 }}%">
-								
-						</div>
-						<h3>Average amount in deck: {3}</h3>
+						{% if card.expeditionTotal != 0 %}
+							<h3>Expedition Winrate: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.expeditionWins|div:card.expeditionTotal|mul:100 }}%">
+									
+							</div>
+							<h3>Expedition Pickrate: {{ card.expeditionTotal|div:shadowExpedition|mul:100 }}%</h3>
+							<div class="pickRateLevel" style="width: {{ card.expeditionTotal|div:shadowExpedition|mul:100 }}%">
+									
+							</div>
+							<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 				</div>
 			{% endif %}
