@@ -42,19 +42,19 @@ def Cards(request):
         if "Demacia" in region.name:
             demaciaNormal += region.normalTotal
             demaciaExpedition += region.expeditionTotal
-        elif "Freljord" in region.name:
+        if "Freljord" in region.name:
             freljordNormal += region.normalTotal
             freljordExpedition += region.expeditionTotal
-        elif "Ionia" in region.name:
+        if "Ionia" in region.name:
             ioniaNormal += region.normalTotal
             ioniaExpedition += region.expeditionTotal
-        elif "Noxus" in region.name:
+        if "Noxus" in region.name:
             noxusNormal += region.normalTotal
             noxusExpedition += region.expeditionTotal
-        elif "Piltover & Zaun" in region.name:
+        if "Piltover & Zaun" in region.name:
             pazNormal += region.normalTotal
             pazExpedition += region.expeditionTotal
-        elif "Shadow Isles" in region.name:
+        if "Shadow Isles" in region.name:
             shadowNormal += region.normalTotal
             shadowExpedition += region.expeditionTotal
     return render(request, 'stats/cards.html', {'cards': Card.objects.all(), 'demaciaNormal': demaciaNormal, 'demaciaExpedition': demaciaExpedition, 'freljordNormal': freljordNormal, 'freljordExpedition': freljordExpedition, 'ioniaNormal': ioniaNormal, 'ioniaExpedition': ioniaExpedition, 'noxusNormal': noxusNormal, 'noxusExpedition': noxusExpedition, 'pazNormal': pazNormal, 'pazExpedition': pazExpedition, 'shadowNormal': shadowNormal, 'shadowExpedition': shadowExpedition})
