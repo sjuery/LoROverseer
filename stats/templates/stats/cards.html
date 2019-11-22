@@ -34,15 +34,17 @@
 			{% if 'DE' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
-								
-						</div>
+						{% if card.normalTotal != 0 %}
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
+									
+							</div>
 						<h3>Normal Pickrate: {{ card.normalTotal|div:demaciaNormal|mul:100 }}%</h3>
 						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:demaciaNormal|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
@@ -68,15 +70,17 @@
 			{% if 'FR' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
-						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
-						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
-								
-						</div>
+						{% if card.normalTotal != 0 %}
+							<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
+							<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
+									
+							</div>
 						<h3>Normal Pickrate: {{ card.normalTotal|div:freljordNormal|mul:100 }}%</h3>
 						<div class="pickRateLevel" style="width: {{ card.normalTotal|div:freljordNormal|mul:100 }}%">
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
@@ -102,6 +106,7 @@
 			{% if 'IO' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
+						{% if card.normalTotal != 0 %}
 						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
 						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 								
@@ -111,6 +116,7 @@
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
@@ -136,6 +142,7 @@
 			{% if 'NX' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
+						{% if card.normalTotal != 0 %}
 						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
 						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 								
@@ -145,6 +152,7 @@
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
@@ -170,6 +178,7 @@
 			{% if 'PZ' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
+						{% if card.normalTotal != 0 %}
 						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
 						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 								
@@ -179,6 +188,7 @@
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
@@ -204,6 +214,7 @@
 			{% if 'SI' in card.id %}
 				<div class="skillBox" style="overflow: auto; width: 100%; display: flex;">
 					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
+						{% if card.normalTotal != 0 %}
 						<h3>Normal Winrate: {{ card.normalWins|div:card.normalTotal|mul:100 }}%</h3>
 						<div class="winRateLevelNF" style="width: {{ card.normalWins|div:card.normalTotal|mul:100 }}%">
 								
@@ -213,6 +224,7 @@
 								
 						</div>
 						<h3>Average amount in deck: {3}</h3>
+						{% endif %}
 					</div>
 					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
 						<img class="card-img" src="{{ url }}">
