@@ -1,0 +1,155 @@
+{% extends "stats/base.html" %}
+{% load mathfilters %}
+{% block content %}
+	<!-- Tab links -->
+	<h1 style="text-align: center;">Deck Statistics</h1>
+	<br>
+	<h3 style="text-align: left; float: left">Winrate</h1>
+	<h3 style="text-align: right;">Pickrate</h1>
+	<div class="tab">
+		<button class="tablinks" onclick="openRegion(event, 'Demacia')">Demacia</button>
+		<button class="tablinks" onclick="openRegion(event, 'Freljord')">Freljord</button>
+		<button class="tablinks" onclick="openRegion(event, 'Ionia')">Ionia</button>
+		<button class="tablinks" onclick="openRegion(event, 'Noxus')">Noxus</button>
+		<button class="tablinks" onclick="openRegion(event, 'Piltover & Zaun')">Piltover & Zaun</button>
+		<button class="tablinks" onclick="openRegion(event, 'Shadow Isles')">Shadow Isles</button>
+	</div>
+	
+
+	<script>
+		function openRegion(evt, regionName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(regionName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+	</script>
+		
+	<!-- Tab content -->
+	<div id="Demacia" class="tabcontent">
+		{% for deck in decks %}
+			{% if 'Demacia' in deck.regions %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ deck.code }} | {{ deck.regions }}</p>
+					<div class="skill" style="text-align: center">
+						<div class="winRateLevel" style="width: {{deck.wins|div:deck.totalGames|mul:50}}%">
+								
+						</div>
+						{% with pickRate=deck.totalGames|div:allDecksTotal|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+		
+	<div id="Freljord" class="tabcontent">
+		{% for deck in decks %}
+			{% if 'Freljord' in deck.region %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ deck.code }} | {{ deck.regions }}</p>
+					<div class="skill" style="text-align: center">
+						<div class="winRateLevel" style="width: {{deck.wins|div:deck.totalGames|mul:50}}%">
+								
+						</div>
+						{% with pickRate=deck.totalGames|div:allDecksTotal|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+		
+	<div id="Ionia" class="tabcontent">
+		{% for deck in decks %}
+			{% if 'Ionia' in deck.region %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ deck.code }} | {{ deck.regions }}</p>
+					<div class="skill" style="text-align: center">
+						<div class="winRateLevel" style="width: {{deck.wins|div:deck.totalGames|mul:50}}%">
+								
+						</div>
+						{% with pickRate=deck.totalGames|div:allDecksTotal|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	<div id="Noxus" class="tabcontent">
+		{% for deck in decks %}
+			{% if 'Noxus' in deck.region %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ deck.code }} | {{ deck.regions }}</p>
+					<div class="skill" style="text-align: center">
+						<div class="winRateLevel" style="width: {{deck.wins|div:deck.totalGames|mul:50}}%">
+								
+						</div>
+						{% with pickRate=deck.totalGames|div:allDecksTotal|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+		
+	<div id="Piltover & Zaun" class="tabcontent">
+		{% for deck in decks %}
+			{% if 'Piltover & Zaun' in deck.region %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ deck.code }} | {{ deck.regions }}</p>
+					<div class="skill" style="text-align: center">
+						<div class="winRateLevel" style="width: {{deck.wins|div:deck.totalGames|mul:50}}%">
+								
+						</div>
+						{% with pickRate=deck.totalGames|div:allDecksTotal|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+		
+	<div id="Shadow Isles" class="tabcontent">
+		{% for deck in decks %}
+			{% if 'Shadow Isles' in deck.region %}
+				<div class="skillBox">
+					<p style="text-align: center">{{ deck.code }} | {{ deck.regions }}</p>
+					<div class="skill" style="text-align: center">
+						<div class="winRateLevel" style="width: {{deck.wins|div:deck.totalGames|mul:50}}%">
+								
+						</div>
+						{% with pickRate=deck.totalGames|div:allDecksTotal|mul:50 %}
+						<div class="pickRateLevel" style="width: {{pickRate}}%; margin-left: {{50|sub:pickRate}}%">
+							
+						</div>
+						{% endwith %}
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock content %}

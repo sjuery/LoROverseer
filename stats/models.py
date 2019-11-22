@@ -33,6 +33,7 @@ class Region(models.Model):
 
 class Deck(models.Model):
 	code = models.CharField(max_length=100, unique=True, primary_key=True)
+	regions = models.CharField(max_length=100)
 	wins = models.IntegerField()
 	totalGames = models.IntegerField()
     

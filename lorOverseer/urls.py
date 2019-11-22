@@ -24,12 +24,12 @@ from stats.views import StatsDetailView, UserGameListView
 
 urlpatterns = [
     path('', stat_views.Overall, name='stats'),
-    path('updateStats/', stat_views.UpdateStats, name='updateStats'),
     path('stats/regions/', stat_views.Overall, name='overallStats'),
     path('stats/regions/normal/', stat_views.Normal, name='normalStats'),
-    path('stats/regions/expeditions/', stat_views.Expedition, name='expeditionStats'),
+    path('stats/regions/expedition/', stat_views.Expedition, name='expeditionStats'),
     path('stats/cards/', stat_views.Cards, name='cardStats'),
-    path('stats/card/<int:pk>/', stat_views.Overall, name='overallCardStats'),
+    path('stats/decks/', stat_views.NormalDecks, name='deckStats'),
+    path('stats/decks/normal/', stat_views.NormalDecks, name='deckNormalStats'),
     path('stats/games/', UserGameListView.as_view(), name='games'),
     path('stats/game/<int:pk>/', StatsDetailView.as_view(), name='gameDetails'),
     path('stats/game/', stat_views.Replay, name='gameDetails'),

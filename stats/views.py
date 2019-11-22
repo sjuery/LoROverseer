@@ -62,8 +62,6 @@ def UpdateStats(requests):
             newCard.save()
 
 def Cards(request):
-    r = requests.get("https://lor.mln.cx/Set1/en_us/data/set1-en_us.json")
-    data = r.json()
     demaciaNormal, demaciaExpedition, freljordNormal, freljordExpedition, ioniaNormal, ioniaExpedition, noxusNormal, noxusExpedition, pazNormal, pazExpedition, shadowNormal, shadowExpedition = 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     for region in Region.objects.all():
         if "Demacia" in region.name:
@@ -85,6 +83,13 @@ def Cards(request):
             shadowNormal += region.normalTotal
             shadowExpedition += region.expeditionTotal
     return render(request, 'stats/cards.html', {'cards': Card.objects.all(), 'demaciaNormal': demaciaNormal, 'demaciaExpedition': demaciaExpedition, 'freljordNormal': freljordNormal, 'freljordExpedition': freljordExpedition, 'ioniaNormal': ioniaNormal, 'ioniaExpedition': ioniaExpedition, 'noxusNormal': noxusNormal, 'noxusExpedition': noxusExpedition, 'pazNormal': pazNormal, 'pazExpedition': pazExpedition, 'shadowNormal': shadowNormal, 'shadowExpedition': shadowExpedition})
+
+def NormalDecks(request):
+    allDecksTotal = 0
+
+    for deck in Deck.objects.all():
+        allDecksTotal += deck.totalGames
+    return render(request, 'stats/decksNormal.html', {'decks': Deck.objects.all().order_by('totalGames'), 'allDecksTotal': allDecksTotal})
 
 class UserGameListView(ListView):
     model = Game
