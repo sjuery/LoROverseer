@@ -1,0 +1,241 @@
+{% extends "stats/base.html" %}
+{% load mathfilters %}
+{% block content %}
+	<!-- Tab links -->
+	<div class="tab">
+		<button class="tablinks" onclick="openRegion(event, 'Demacia')">Demacia</button>
+		<button class="tablinks" onclick="openRegion(event, 'Freljord')">Freljord</button>
+		<button class="tablinks" onclick="openRegion(event, 'Ionia')">Ionia</button>
+		<button class="tablinks" onclick="openRegion(event, 'Noxus')">Noxus</button>
+		<button class="tablinks" onclick="openRegion(event, 'Piltover & Zaun')">Piltover & Zaun</button>
+		<button class="tablinks" onclick="openRegion(event, 'Shadow Isles')">Shadow Isles</button>
+	</div>
+	
+
+	<script>
+		function openRegion(evt, regionName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(regionName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+	</script>
+		
+	<!-- Tab content -->
+	<div id="Demacia" class="tabcontent">
+		{% for card in cards %}
+			{% if "DE" in card.id %}
+				<div class="skillBox" style="overflow: auto;
+				width: 100%; display: flex;">
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
+						<h3>Normal Winrate {{ card.normalWins }}</h3>
+						<div class="winRateLevelNF" style="width: {{35}}%">
+								
+						</div>
+						<h3>Normal Pickrate</h3>
+						<div class="pickRateLevel" style="width: {{35}}%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
+						<img class="card-img" src="{{ url }}">
+					{% endwith %}
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
+						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
+						<div class="winRateLevelNF" style="width: 59%%">
+								
+						</div>
+						<h3>Expedition Pickrate</h3>
+						<div class="pickRateLevel" style="width: 55%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+		
+	<div id="Freljord" class="tabcontent">
+		{% for card in cards %}
+			{% if "FR" in card.id %}
+				<div class="skillBox" style="overflow: auto;
+				width: 100%; display: flex;">
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
+						<h3>Normal Winrate {{ card.normalWins }}</h3>
+						<div class="winRateLevelNF" style="width: {{35}}%">
+								
+						</div>
+						<h3>Normal Pickrate</h3>
+						<div class="pickRateLevel" style="width: {{35}}%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
+						<img class="card-img" src="{{ url }}">
+					{% endwith %}
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
+						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
+						<div class="winRateLevelNF" style="width: 59%%">
+								
+						</div>
+						<h3>Expedition Pickrate</h3>
+						<div class="pickRateLevel" style="width: 55%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+		
+	<div id="Ionia" class="tabcontent">
+		{% for card in cards %}
+			{% if "IO" in card.id %}
+				<div class="skillBox" style="overflow: auto;
+				width: 100%; display: flex;">
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
+						<h3>Normal Winrate {{ card.normalWins }}</h3>
+						<div class="winRateLevelNF" style="width: {{35}}%">
+								
+						</div>
+						<h3>Normal Pickrate</h3>
+						<div class="pickRateLevel" style="width: {{35}}%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
+						<img class="card-img" src="{{ url }}">
+					{% endwith %}
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
+						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
+						<div class="winRateLevelNF" style="width: 59%%">
+								
+						</div>
+						<h3>Expedition Pickrate</h3>
+						<div class="pickRateLevel" style="width: 55%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	<div id="Noxus" class="tabcontent">
+		{% for card in cards %}
+			{% if "NX" in card.id %}
+				<div class="skillBox" style="overflow: auto;
+				width: 100%; display: flex;">
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
+						<h3>Normal Winrate {{ card.normalWins }}</h3>
+						<div class="winRateLevelNF" style="width: {{35}}%">
+								
+						</div>
+						<h3>Normal Pickrate</h3>
+						<div class="pickRateLevel" style="width: {{35}}%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
+						<img class="card-img" src="{{ url }}">
+					{% endwith %}
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
+						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
+						<div class="winRateLevelNF" style="width: 59%%">
+								
+						</div>
+						<h3>Expedition Pickrate</h3>
+						<div class="pickRateLevel" style="width: 55%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+		
+	<div id="Piltover & Zaun" class="tabcontent">
+		{% for card in cards %}
+			{% if "PZ" in card.id %}
+				<div class="skillBox" style="overflow: auto;
+				width: 100%; display: flex;">
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
+						<h3>Normal Winrate {{ card.normalWins }}</h3>
+						<div class="winRateLevelNF" style="width: {{35}}%">
+								
+						</div>
+						<h3>Normal Pickrate</h3>
+						<div class="pickRateLevel" style="width: {{35}}%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
+						<img class="card-img" src="{{ url }}">
+					{% endwith %}
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
+						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
+						<div class="winRateLevelNF" style="width: 59%%">
+								
+						</div>
+						<h3>Expedition Pickrate</h3>
+						<div class="pickRateLevel" style="width: 55%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+		
+	<div id="Shadow Isles" class="tabcontent">
+		{% for card in cards %}
+			{% if "SI" in card.id %}
+				<div class="skillBox" style="overflow: auto;
+				width: 100%; display: flex;">
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float: left">
+						<h3>Normal Winrate {{ card.normalWins }}</h3>
+						<div class="winRateLevelNF" style="width: {{35}}%">
+								
+						</div>
+						<h3>Normal Pickrate</h3>
+						<div class="pickRateLevel" style="width: {{35}}%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+					{% with "https://lor.mln.cx/Set1/en_us/img/cards/"|add:card.id|add:".png" as url %}
+						<img class="card-img" src="{{ url }}">
+					{% endwith %}
+					<div class="skill" style="text-align: center; height: 10%; width: 35%; float:right">
+						<h3>Expedition Winrate {{ card.expeditionWins }}</h3>
+						<div class="winRateLevelNF" style="width: 59%%">
+								
+						</div>
+						<h3>Expedition Pickrate</h3>
+						<div class="pickRateLevel" style="width: 55%">
+								
+						</div>
+						<h3>Average amount in deck: {3}</h3>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock content %}

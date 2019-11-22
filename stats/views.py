@@ -1,6 +1,7 @@
 import io
 import json
 import os
+import requests
 from lor_deckcodes import LoRDeck
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
@@ -32,6 +33,11 @@ def Expedition(request):
     for region in Region.objects.all():
         totalGames += region.expeditionTotal
     return render(request, 'stats/expedition.html', {'regions': Region.objects.all(), 'totalGames':totalGames})
+
+def Cards(request):
+    r = requests.get("https://lor.mln.cx/Set1/en_us/data/set1-en_us.json")
+    data = r.json()
+    return render(request, 'stats/cards.html', {'cards': data, 'cardStats': Card.objects.all()})
 
 class UserGameListView(ListView):
     model = Game
