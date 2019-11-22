@@ -110,6 +110,7 @@ Accessing the website without an account will still allow you to see general sta
 - [Python](https://www.python.org/) - Python
 - [Django](https://www.djangoproject.com/) - DJango
 - [AWS](https://aws.amazon.com/) - AWS
+- [Heroku](https://dashboard.heroku.com/) - Heroku
 
 ## ✍️ Authors <a name = "authors"></a>
 - [@sjuery](https://github.com/sjuery)
