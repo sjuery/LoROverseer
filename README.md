@@ -102,7 +102,9 @@ Gonna fill this in after the project is over because the deadline is almost up
 Simply go to the following link:
 https://loroverseer.herokuapp.com/
 
-Creating an account will allow you to track your Legends of Runeterra games using this app (https://github.com/sjuery/LoRDataGatherer)
+Creating an account will allow you to track your Legends of Runeterra games using this app (https://github.com/sjuery/LoRDataGatherer).
+
+Clicking on a specific game on your Profile (https://loroverseer.herokuapp.com/profile/) will redirect you to a replay of said game
 
 Accessing the website without an account will still allow you to see general statistics on all games played with the app running.
 
